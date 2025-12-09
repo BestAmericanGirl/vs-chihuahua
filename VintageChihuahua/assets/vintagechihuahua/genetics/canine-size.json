@@ -1,0 +1,18 @@
+{
+    "genes": {
+        "autosomal": [
+            { "Size": ["S", "s"] }
+        ],
+        "xz": []
+    },
+    "interpreters": [ "Polygenes", "CanineSize" ],
+    "sexdetermination": "xy",
+    "initializers": {
+        "domesticDog": {
+            "autosomal": {
+                "Size": { "default": "S", "s": 0.3 }
+            },
+            "conditions": {}
+        }
+    }
+}

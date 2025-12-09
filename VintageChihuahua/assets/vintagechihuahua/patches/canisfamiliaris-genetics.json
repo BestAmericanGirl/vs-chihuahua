@@ -1,0 +1,247 @@
+[
+    {
+        "comment": "Add genelib.genetics behavior to adult canids - Server side",
+        "file": "caninae:entities/land/canina-adult.json",
+        "op": "add",
+        "path": "/server/behaviors/-",
+        "value": {
+            "code": "genelib.genetics",
+            "genomeType": "vintagechihuahua:canine-size"
+        },
+        "side": "server"
+    },
+    {
+        "comment": "Add genelib.genetics behavior to baby canids - Server side",
+        "file": "caninae:entities/land/canina-baby.json",
+        "op": "add",
+        "path": "/server/behaviors/-",
+        "value": {
+            "code": "genelib.genetics",
+            "genomeType": "vintagechihuahua:canine-size"
+        },
+        "side": "server"
+    },
+    {
+        "comment": "Add genelib.genetics behavior to adult canids - Client side",
+        "file": "caninae:entities/land/canina-adult.json",
+        "op": "add",
+        "path": "/client/behaviors/-",
+        "value": {
+            "code": "genelib.genetics",
+            "genomeType": "vintagechihuahua:canine-size"
+        },
+        "side": "server"
+    },
+    {
+        "comment": "Add genelib.genetics behavior to baby canids - Client side",
+        "file": "caninae:entities/land/canina-baby.json",
+        "op": "add",
+        "path": "/client/behaviors/-",
+        "value": {
+            "code": "genelib.genetics",
+            "genomeType": "vintagechihuahua:canine-size"
+        },
+        "side": "server"
+    },
+    {
+        "comment": "Replace multiply with genelib.multiply for adult female canids - Client side",
+        "file": "caninae:entities/land/canina-adult.json",
+        "op": "replace",
+        "path": "/client/behaviors/3",
+        "value": {
+            "code": "genelib.multiply",
+            "enabledByType": {
+                "*-female-*": true,
+                "*": false
+            }
+        },
+        "side": "server"
+    },
+    {
+        "comment": "Replace multiply with genelib.multiply for adult female canids - Server side",
+        "file": "caninae:entities/land/canina-adult.json",
+        "op": "replace",
+        "path": "/server/behaviors/8",
+        "value": {
+            "code": "genelib.multiply",
+            "enabledByType": {
+                "*-adult-female-*": true,
+                "*": false
+            },
+            "spawnEntityCodesByType": {
+                "*-lupus": [
+                    { "code": "caninae:caninae-canina-baby-female-{genus}-{species}" },
+                    { "code": "caninae:caninae-canina-baby-male-{genus}-{species}" },
+                    { "code": "caninae:caninae-canina-baby-female-{genus}-{species}" },
+                    { "code": "caninae:caninae-canina-baby-male-{genus}-{species}" },
+                    { "code": "caninae:caninae-canina-baby-female-{genus}-{species}" },
+                    { "code": "caninae:caninae-canina-baby-male-{genus}-{species}" },
+                    { "code": "caninae:caninae-canina-baby-female-{genus}-{species}" },
+                    { "code": "caninae:caninae-canina-baby-male-{genus}-{species}" },
+                    { "code": "caninae:caninae-canina-baby-female-{genus}-familiaris" },
+                    { "code": "caninae:caninae-canina-baby-male-{genus}-familiaris" }
+                ],
+                "*": [
+                    { "code": "caninae:caninae-canina-baby-female-{genus}-{species}" },
+                    { "code": "caninae:caninae-canina-baby-male-{genus}-{species}" }
+                ]
+            },
+            "requiresNearbyEntityCodeByType": {
+                "*": "caninae:caninae-canina-adult-male-{genus}-*"
+            },
+            "requiresNearbyEntityRange": 5,
+            "spawnQuantityMin": 1,
+            "spawnQuantityMaxByType": {
+                "*-dirus": 14,
+                "*-aureus": 8,
+                "*-familiaris": 14,
+                "*-latrans": 12,
+                "*-lupastor": 8,
+                "*-lupus": 14,
+                "*-lupusarctos": 14,
+                "*-lupusdingo": 9,
+                "*-lycaon": 14,
+                "*-rufus": 14,
+                "*-simensis": 6,
+                "*-alpinus": 6,
+                "*-sardous": 6,
+                "*-adusta": 6,
+                "*-mesomelas": 9,
+                "*-pictus": 16
+            },
+            "pregnancyDaysByType": {
+                "*-dirus": 13,
+                "*-aureus": 12,
+                "*-familiaris": 13,
+                "*-latrans": 12,
+                "*-lupastor": 12,
+                "*-lupus": 13,
+                "*-lupusarctos": 13,
+                "*-lupusdingo": 13,
+                "*-lycaon": 12,
+                "*-rufus": 12,
+                "*-simensis": 12,
+                "*-alpinus": 12,
+                "*-sardous": 12,
+                "*-adusta": 12,
+                "*-mesomelas": 12,
+                "*-pictus": 14
+            },
+            "multiplyCooldownDaysMinByType": {
+                "*-dirus": 9,
+                "*-aureus": 9,
+                "*-familiaris": 9,
+                "*-latrans": 9,
+                "*-lupastor": 9,
+                "*-lupus": 9,
+                "*-lupusarctos": 9,
+                "*-lupusdingo": 9,
+                "*-lycaon": 9,
+                "*-rufus": 9,
+                "*-simensis": 9,
+                "*-alpinus": 9,
+                "*-sardous": 9,
+                "*-adusta": 9,
+                "*-mesomelas": 9,
+                "*-pictus": 9
+            },
+            "multiplyCooldownDaysMaxByType": {
+                "*-dirus": 18,
+                "*-aureus": 18,
+                "*-familiaris": 18,
+                "*-latrans": 18,
+                "*-lupastor": 18,
+                "*-lupus": 18,
+                "*-lupusarctos": 18,
+                "*-lupusdingo": 18,
+                "*-lycaon": 18,
+                "*-rufus": 18,
+                "*-simensis": 18,
+                "*-alpinus": 18,
+                "*-sardous": 18,
+                "*-adusta": 18,
+                "*-mesomelas": 18,
+                "*-pictus": 18
+            },
+            "portionsEatenForMultiplyByType": {
+                "*-dirus": 9,
+                "*-aureus": 4,
+                "*-familiaris": 7,
+                "*-latrans": 5,
+                "*-lupastor": 5,
+                "*-lupus": 7,
+                "*-lupusarctos": 7,
+                "*-lupusdingo": 5,
+                "*-lycaon": 6,
+                "*-rufus": 6,
+                "*-simensis": 5,
+                "*-alpinus": 5,
+                "*-sardous": 5,
+                "*-adusta": 5,
+                "*-mesomelas": 5,
+                "*-pictus": 6
+            }
+        },
+        "side": "server"
+    },
+    {
+        "comment": "Add genelib.info to adult canids - Server side",
+        "file": "caninae:entities/land/canina-adult.json",
+        "op": "add",
+        "path": "/server/behaviors/-",
+        "value": {
+            "code": "genelib.info",
+            "showtagonlywhentargeted": true
+        },
+        "side": "server"
+    },
+    {
+        "comment": "Add genelib.info to baby canids - Server side",
+        "file": "caninae:entities/land/canina-baby.json",
+        "op": "add",
+        "path": "/server/behaviors/-",
+        "value": {
+            "code": "genelib.info",
+            "showtagonlywhentargeted": true
+        },
+        "side": "server"
+    },
+    {
+        "comment": "Add genelib.info to adult canids - Client side",
+        "file": "caninae:entities/land/canina-adult.json",
+        "op": "add",
+        "path": "/client/behaviors/-",
+        "value": {
+            "code": "genelib.info",
+            "showtagonlywhentargeted": true
+        },
+        "side": "server"
+    },
+    {
+        "comment": "Add genelib.info to baby canids - Client side",
+        "file": "caninae:entities/land/canina-baby.json",
+        "op": "add",
+        "path": "/client/behaviors/-",
+        "value": {
+            "code": "genelib.info",
+            "showtagonlywhentargeted": true
+        },
+        "side": "server"
+    },
+    {
+        "comment": "Add puppy shape",
+        "file": "caninae:entities/land/canina-adult.json",
+        "op": "add",
+        "path": "/client/shapeByType/*-canis-familiaris/alternates",
+        "value": [{ "base": "caninae:shapes/entity/canina/lupus-baby" }],
+        "side": "server"
+    },
+    {
+        "comment": "Add puppy texture",
+        "file": "caninae:entities/land/canina-adult.json",
+        "op": "add",
+        "path": "/client/textureByType/*-canis-familiaris/alternates",
+        "value": [{ "base": "caninae:entity/canis/latrans-baby" }, { "base": "caninae:entity/canis/latrans-baby" }],
+        "size": "server"
+    }
+]
