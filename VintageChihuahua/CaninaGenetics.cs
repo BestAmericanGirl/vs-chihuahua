@@ -5,15 +5,14 @@ using Vintagestory.GameContent;
 
 namespace VintageChihuahua
 {
-    public class CanineSizeGenetics : GeneInterpreter
+    public class CaninaGenetics : GeneInterpreter
     {
-        public string Name => "CanineSize";
+        public string Name => "Canina";
 
         void GeneInterpreter.Interpret(EntityBehaviorGenetics genetics)
         {
             Entity entity = genetics.entity;
             Genome genome = genetics.Genome;
-
 
             // Only apply to adult dogs
             if (!entity.Code.Path.Contains("adult") || !entity.Code.Path.Contains("familiaris"))
@@ -29,7 +28,6 @@ namespace VintageChihuahua
                 entity.Properties.Client.LoadedShapeForEntity = entity.Properties.Client.LoadedAlternateShapes[0];
                 entity.Properties.Client.ShapeForEntity = entity.Properties.Client.Shape.Alternates[0];
                 entity.WatchedAttributes.SetInt("textureIndex", 1);
-                entity.GetBehavior<EntityBehaviorTaskAI>();
             }
             else
             {
@@ -62,6 +60,7 @@ namespace VintageChihuahua
             EntityClientProperties client = entity.World.GetEntityType(entity.Code).Client;
             if (sizeMultiplier < 0.5f)
             {
+                // Scale back up because the puppy shape is already small
                 sizeMultiplier = 0.7f;
             }
             entity.Properties.Client.Size = client.Size * sizeMultiplier;

@@ -6,7 +6,7 @@
         "path": "/server/behaviors/-",
         "value": {
             "code": "genelib.genetics",
-            "genomeType": "vintagechihuahua:canine-size"
+            "genomeType": "vintagechihuahua:canina"
         },
         "side": "server"
     },
@@ -17,7 +17,7 @@
         "path": "/server/behaviors/-",
         "value": {
             "code": "genelib.genetics",
-            "genomeType": "vintagechihuahua:canine-size"
+            "genomeType": "vintagechihuahua:canina"
         },
         "side": "server"
     },
@@ -28,7 +28,7 @@
         "path": "/client/behaviors/-",
         "value": {
             "code": "genelib.genetics",
-            "genomeType": "vintagechihuahua:canine-size"
+            "genomeType": "vintagechihuahua:canina"
         },
         "side": "server"
     },
@@ -39,7 +39,7 @@
         "path": "/client/behaviors/-",
         "value": {
             "code": "genelib.genetics",
-            "genomeType": "vintagechihuahua:canine-size"
+            "genomeType": "vintagechihuahua:canina"
         },
         "side": "server"
     },
@@ -70,20 +70,44 @@
             },
             "spawnEntityCodesByType": {
                 "*-lupus": [
-                    { "code": "caninae:caninae-canina-baby-female-{genus}-{species}" },
-                    { "code": "caninae:caninae-canina-baby-male-{genus}-{species}" },
-                    { "code": "caninae:caninae-canina-baby-female-{genus}-{species}" },
-                    { "code": "caninae:caninae-canina-baby-male-{genus}-{species}" },
-                    { "code": "caninae:caninae-canina-baby-female-{genus}-{species}" },
-                    { "code": "caninae:caninae-canina-baby-male-{genus}-{species}" },
-                    { "code": "caninae:caninae-canina-baby-female-{genus}-{species}" },
-                    { "code": "caninae:caninae-canina-baby-male-{genus}-{species}" },
-                    { "code": "caninae:caninae-canina-baby-female-{genus}-familiaris" },
-                    { "code": "caninae:caninae-canina-baby-male-{genus}-familiaris" }
+                    {
+                        "code": "caninae:caninae-canina-baby-female-{genus}-{species}"
+                    },
+                    {
+                        "code": "caninae:caninae-canina-baby-male-{genus}-{species}"
+                    },
+                    {
+                        "code": "caninae:caninae-canina-baby-female-{genus}-{species}"
+                    },
+                    {
+                        "code": "caninae:caninae-canina-baby-male-{genus}-{species}"
+                    },
+                    {
+                        "code": "caninae:caninae-canina-baby-female-{genus}-{species}"
+                    },
+                    {
+                        "code": "caninae:caninae-canina-baby-male-{genus}-{species}"
+                    },
+                    {
+                        "code": "caninae:caninae-canina-baby-female-{genus}-{species}"
+                    },
+                    {
+                        "code": "caninae:caninae-canina-baby-male-{genus}-{species}"
+                    },
+                    {
+                        "code": "caninae:caninae-canina-baby-female-{genus}-familiaris"
+                    },
+                    {
+                        "code": "caninae:caninae-canina-baby-male-{genus}-familiaris"
+                    }
                 ],
                 "*": [
-                    { "code": "caninae:caninae-canina-baby-female-{genus}-{species}" },
-                    { "code": "caninae:caninae-canina-baby-male-{genus}-{species}" }
+                    {
+                        "code": "caninae:caninae-canina-baby-female-{genus}-{species}"
+                    },
+                    {
+                        "code": "caninae:caninae-canina-baby-male-{genus}-{species}"
+                    }
                 ]
             },
             "requiresNearbyEntityCodeByType": {
@@ -233,7 +257,11 @@
         "file": "caninae:entities/land/canina-adult.json",
         "op": "add",
         "path": "/client/shapeByType/*-canis-familiaris/alternates",
-        "value": [{ "base": "caninae:shapes/entity/canina/lupus-baby" }],
+        "value": [
+            {
+                "base": "caninae:shapes/entity/canina/lupus-baby"
+            }
+        ],
         "side": "server"
     },
     {
@@ -241,7 +269,97 @@
         "file": "caninae:entities/land/canina-adult.json",
         "op": "add",
         "path": "/client/textureByType/*-canis-familiaris/alternates",
-        "value": [{ "base": "caninae:entity/canis/latrans-baby" }, { "base": "caninae:entity/canis/latrans-baby" }],
-        "size": "server"
+        "value": [
+            {
+                "base": "caninae:entity/canis/latrans-baby"
+            }
+        ],
+        "side": "server"
+    },
+    {
+        "comment": "Add dog walking",
+        "file": "caninae:entities/land/canina-adult.json",
+        "op": "add",
+        "path": "/server/behaviors/10/aitasks/-",
+        "value": {
+            "code": "followleadholder",
+            "priority": 3.8,
+            "enabledByType": {
+                "*-canis-familiaris": true,
+                "*": false
+            },
+            "entityCode": "player",
+            "minGeneration": 2,
+            "movespeedByType": {
+                "*": 0.06
+            },
+            "maxDistance": 3,
+            "searchRange": 8,
+            "animationByType": {
+                "*": "Trot"
+            },
+            "animationSpeed": 2,
+            "stopOnHurt": true
+        },
+        "side": "server"
+    },
+    {
+        "comment": "Look at player",
+        "file": "caninae:entities/land/canina-adult.json",
+        "op": "add",
+        "path": "/server/behaviors/10/aitasks/-",
+        "value": {
+            "code": "lookatentity",
+            "priority": 3.0,
+            "enabledByType": {
+                "*-canis-familiaris": true,
+                "*": false
+            },
+            "entityCode": "player",
+            "animationByType": {
+                "*": "Trot"
+            },
+            "animation": "Sit",
+            "stopOnHurt": true,
+            "whenNotInEmotionState": "aggressiveondamage|aggressivearoundentities|fleeondamage"
+        },
+        "side": "server"
+    },
+    {
+        "comment": "Sit near player",
+        "file": "caninae:entities/land/canina-adult.json",
+        "op": "add",
+        "path": "/server/behaviors/10/aitasks/-",
+        "value": {
+            "code": "idle",
+            "enabledByType": {
+                "*-canis-familiaris": true,
+                "*": false
+            },
+            "priority": 3.0,
+            "minduration": 6000,
+            "maxduration": 45000,
+            "mincooldown": 0,
+            "maxcooldown": 1000,
+            "priorityForCancel": 1.7,
+            "stopOnNearbyEntityCodes": [
+                "bear-*",
+                "wolf-*",
+                "sheep-*",
+                "pig-*",
+                "cervidae-*",
+                "caprinae-*",
+                "caninae-canina-*",
+                "pantherinae-*",
+                "suidae-*",
+                "thylacoleonidae-*",
+                "ursidae-*"
+            ],
+            "stopRange": 8,
+            "stopOnHurt": true,
+            "whenNotInEmotionState": "aggressiveondamage|aggressivearoundentities|fleeondamage",
+            "animation": "Sit"
+        },
+        "side": "server"
     }
 ]

@@ -16,7 +16,7 @@ namespace VintageChihuahua
             base.Start(api);
 
             // Register the custom gene interpreter
-            GenomeType.RegisterInterpreter(new CanineSizeGenetics());
+            GenomeType.RegisterInterpreter(new CaninaGenetics());
         }
 
         public override double ExecuteOrder()

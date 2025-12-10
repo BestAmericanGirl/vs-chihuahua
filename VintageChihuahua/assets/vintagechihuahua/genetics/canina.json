@@ -5,7 +5,7 @@
         ],
         "xz": []
     },
-    "interpreters": [ "Polygenes", "CanineSize" ],
+    "interpreters": [ "Polygenes", "Canina" ],
     "sexdetermination": "xy",
     "initializers": {
         "domesticDog": {
