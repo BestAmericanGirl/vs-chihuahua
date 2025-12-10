@@ -310,15 +310,16 @@
         "path": "/server/behaviors/10/aitasks/-",
         "value": {
             "code": "lookatentity",
-            "priority": 3.0,
+            "priority": 1.7,
+            "minduration": 6000,
+            "maxduration": 45000,
+            "mincooldown": 0,
+            "maxcooldown": 15000,
             "enabledByType": {
                 "*-canis-familiaris": true,
                 "*": false
             },
             "entityCode": "player",
-            "animationByType": {
-                "*": "Trot"
-            },
             "animation": "Sit",
             "stopOnHurt": true,
             "whenNotInEmotionState": "aggressiveondamage|aggressivearoundentities|fleeondamage"
@@ -336,7 +337,7 @@
                 "*-canis-familiaris": true,
                 "*": false
             },
-            "priority": 3.0,
+            "priority": 1.7,
             "minduration": 6000,
             "maxduration": 45000,
             "mincooldown": 0,
