@@ -1,5 +1,6 @@
 ﻿using Genelib;
 using Vintagestory.API.Common;
+using Vintagestory.GameContent;
 
 namespace VintageChihuahua
 {
@@ -17,7 +18,8 @@ namespace VintageChihuahua
 
             // Register the custom gene interpreter
             GenomeType.RegisterInterpreter(new CaninaGenetics());
-        }
+			AiTaskRegistry.Register<AiTaskIdleLookAtTarget>("idlelookattarget");
+		}
 
         public override double ExecuteOrder()
         {

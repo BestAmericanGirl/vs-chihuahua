@@ -304,62 +304,66 @@
         "side": "server"
     },
     {
-        "comment": "Look at player",
+        "comment": "Sit and look at player",
         "file": "caninae:entities/land/canina-adult.json",
         "op": "add",
         "path": "/server/behaviors/10/aitasks/-",
         "value": {
-            "code": "lookatentity",
-            "priority": 1.7,
-            "minduration": 6000,
-            "maxduration": 45000,
-            "mincooldown": 0,
-            "maxcooldown": 15000,
+            "code": "idlelookattarget",
+            "priority": 1.3,
+            "minDurationMs": 3000,
+            "maxDurationMs": 60000,
+            "minCooldownMs": 5000,
+            "maxCooldownMs": 15000,
             "enabledByType": {
                 "*-canis-familiaris": true,
                 "*": false
             },
-            "entityCode": "player",
-            "animation": "Sit",
+            "entityCodes": [
+                "player"
+            ],
+            "seekingRange": 8,
             "stopOnHurt": true,
-            "whenNotInEmotionState": "aggressiveondamage|aggressivearoundentities|fleeondamage"
+            "animation": "Sit",
+            "whenNotInEmotionState": [
+                "aggressiveondamage",
+                "aggressivearoundentities",
+                "fleeondamage"
+            ],
+            "executionChance": 0.4,
+            "checkForSolidUpSide": true
         },
         "side": "server"
     },
     {
-        "comment": "Sit near player",
+        "comment": "Lie and look at player",
         "file": "caninae:entities/land/canina-adult.json",
         "op": "add",
         "path": "/server/behaviors/10/aitasks/-",
         "value": {
-            "code": "idle",
+            "code": "idlelookattarget",
+            "priority": 1.3,
+            "minDurationMs": 3000,
+            "maxDurationMs": 60000,
+            "minCooldownMs": 5000,
+            "maxCooldownMs": 15000,
             "enabledByType": {
                 "*-canis-familiaris": true,
                 "*": false
             },
-            "priority": 1.7,
-            "minduration": 6000,
-            "maxduration": 45000,
-            "mincooldown": 0,
-            "maxcooldown": 1000,
-            "priorityForCancel": 1.7,
-            "stopOnNearbyEntityCodes": [
-                "bear-*",
-                "wolf-*",
-                "sheep-*",
-                "pig-*",
-                "cervidae-*",
-                "caprinae-*",
-                "caninae-canina-*",
-                "pantherinae-*",
-                "suidae-*",
-                "thylacoleonidae-*",
-                "ursidae-*"
+            "entityCodes": [
+                "player"
             ],
-            "stopRange": 8,
+            "seekingRange": 8,
             "stopOnHurt": true,
-            "whenNotInEmotionState": "aggressiveondamage|aggressivearoundentities|fleeondamage",
-            "animation": "Sit"
+            "animation": "Lie",
+            "whenNotInEmotionState": [
+                "aggressiveondamage",
+                "aggressivearoundentities",
+                "fleeondamage"
+            ],
+            "executionChance": 0.4,
+            "checkForSolidUpSide": true
         },
         "side": "server"
     }
