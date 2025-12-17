@@ -1,7 +1,8 @@
 {
     "genes": {
         "autosomal": [
-            { "Size": ["S", "s"] }
+            { "Size": ["S", "s"] },
+            { "Velcro": ["V", "v"] }
         ],
         "xz": []
     },
@@ -10,7 +11,8 @@
     "initializers": {
         "domesticDog": {
             "autosomal": {
-                "Size": { "default": "S", "s": 0.3 }
+                "Size": { "default": "S", "s": 0.3 },
+                "Velcro": { "default": "V", "v": 0.3 }
             },
             "conditions": {}
         }

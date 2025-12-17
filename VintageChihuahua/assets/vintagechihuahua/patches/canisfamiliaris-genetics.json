@@ -304,14 +304,14 @@
         "side": "server"
     },
     {
-        "comment": "Sit and look at player",
+        "comment": "Sit and look at player - Max values for a velcro dog",
         "file": "caninae:entities/land/canina-adult.json",
         "op": "add",
         "path": "/server/behaviors/10/aitasks/-",
         "value": {
             "code": "idlelookattarget",
             "priority": 1.3,
-            "minDurationMs": 3000,
+            "minDurationMs": 10000,
             "maxDurationMs": 60000,
             "minCooldownMs": 5000,
             "maxCooldownMs": 15000,
@@ -336,14 +336,14 @@
         "side": "server"
     },
     {
-        "comment": "Lie and look at player",
+        "comment": "Lie and look at player - Max values for a velcro dog",
         "file": "caninae:entities/land/canina-adult.json",
         "op": "add",
         "path": "/server/behaviors/10/aitasks/-",
         "value": {
             "code": "idlelookattarget",
             "priority": 1.3,
-            "minDurationMs": 3000,
+            "minDurationMs": 10000,
             "maxDurationMs": 60000,
             "minCooldownMs": 5000,
             "maxCooldownMs": 15000,

@@ -1,4 +1,5 @@
-﻿using Genelib;
+﻿using System;
+using Genelib;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.GameContent;
@@ -8,8 +9,10 @@ namespace VintageChihuahua
     public class CaninaGenetics : GeneInterpreter
     {
         public string Name => "Canina";
+        public static string VelcroAttribute => "vintagechihuahua.velcro";
 
-        void GeneInterpreter.Interpret(EntityBehaviorGenetics genetics)
+
+		void GeneInterpreter.Interpret(EntityBehaviorGenetics genetics)
         {
             Entity entity = genetics.entity;
             Genome genome = genetics.Genome;
@@ -21,6 +24,9 @@ namespace VintageChihuahua
             }
 
             float sizeMultiplier = CalculateSizeMultiplier(genome);
+            float velcroMultiplier = CalculateVelcroMultiplier(genome);
+
+            entity.WatchedAttributes.SetFloat(VelcroAttribute, velcroMultiplier);
 
             if (sizeMultiplier < 0.5f)
             {
@@ -84,7 +90,25 @@ namespace VintageChihuahua
             return 0.65f;
         }
 
-        private void UpdateCollisionBox(Entity entity, float sizeMultiplier)
+		private float CalculateVelcroMultiplier(Genome genome)
+		{
+			// VV = 0.0 (Not velcro at all)
+			// Vv = 0.5 (In the middle)
+			// vv = 1.0 (Very velcro)
+			if (genome.Homozygous("Velcro", "V"))
+			{
+				return 0.0f;
+			}
+
+			if (genome.Homozygous("Velcro", "v"))
+			{
+				return 1.0f;
+			}
+
+			return 0.25f;
+		}
+
+		private void UpdateCollisionBox(Entity entity, float sizeMultiplier)
         {
             // Get the base collision box size
             // Default for canis-familiaris is x: 1.0, y: 0.9
@@ -127,6 +151,57 @@ namespace VintageChihuahua
                 genome.SetAutosomal("Size", 0, "S");
                 genome.SetAutosomal("Size", 1, "S");
             }
-        }
+
+            float velcroMultiplier = entity.WatchedAttributes.GetFloat(VelcroAttribute, -1);
+
+            // Entity was created before this gene was added
+            if (velcroMultiplier < 0)
+            {
+                // Apply at default frequencies
+
+				genome.SetAutosomal("Velcro", 0, "V");
+				genome.SetAutosomal("Velcro", 1, "V");
+
+                // The first allele is the inverse probability of the 2nd allele
+                // Use the first allele since the last allele is always 1 as a fallback
+                float alleleFreq = GetAlleleDefaultFrequency(genome, "Velcro", 0);
+
+				if (entity.World.Rand.NextDouble() > alleleFreq)
+                {
+                    genome.SetAutosomal("Velcro", 0, "v");
+                }
+
+				if (entity.World.Rand.NextDouble() > alleleFreq)
+				{
+					genome.SetAutosomal("Velcro", 1, "v");
+				}
+
+                return;
+			}
+
+
+			if (velcroMultiplier == 0.0f)
+            {
+                genome.SetAutosomal("Velcro", 0, "V");
+				genome.SetAutosomal("Velcro", 1, "V");
+			}
+            else if (velcroMultiplier == 0.25f)
+			{
+				genome.SetAutosomal("Velcro", 0, "V");
+				genome.SetAutosomal("Velcro", 1, "v");
+			}
+            else
+			{
+				genome.SetAutosomal("Velcro", 0, "v");
+				genome.SetAutosomal("Velcro", 1, "v");
+			}
+		}
+
+        private float GetAlleleDefaultFrequency(Genome genome, string gene, int alleleId)
+        {
+			AlleleFrequencies freq = genome.Type.Initializer("domesticDog").Frequencies;
+            int geneID = genome.Type.Autosomal.GeneID(gene);
+            return freq.Autosomal[geneID][alleleId];
+		}
     }
 }
